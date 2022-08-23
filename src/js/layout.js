@@ -9,6 +9,8 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import CardExtendido from "./component/cardExtendido.jsx";
+
 
 //create your first component
 const Layout = () => {
@@ -30,6 +32,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
+						</Route>
+						<Route exact path="/cardExtendido/">
+							<CardExtendido />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
