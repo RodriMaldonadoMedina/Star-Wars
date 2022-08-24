@@ -1,38 +1,59 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "./card.jsx";
+import { Context } from "../store/appContext";
 
 
+const CarruselComun = () => {
+  const {store} = useContext(Context);
 
-const Carrusel = ({ id, personajes }) => {
-  console.log(personajes)
   return (
-    <div className="row bg-secondary my-3">
-      <div id={id} className="carousel slide" data-bs-ride="carousel">
-        <div className="carousel-inner">
-          {
-          personajes &&   
-          (personajes.length > 0) ? 
-            (personajes.map(personaje=>{
+    <div>
+      <h2 className="my-3">Personajes</h2>
+      <div className="row miRow bg-secondary d-flex flex-column relative">
+        {
+        store.personajes &&   
+          (store.personajes.length > 0) ? 
+            (store.personajes.map(personaje=>{
               return ( 
-                <div key={personaje.uid} className={`carousel-item ${personaje.uid == 1 ? "active" : ""}`}>
+                <div key={personaje.uid} className="col-3" style={{height:"100%"}}>
                   <Card name={personaje.name}/>
                 </div>
                 )
               }
             )) : null
-          }
-        </div>
-        <button className="carousel-control-prev" type="button" data-bs-target={`#${id}`} data-bs-slide="prev" style={{height: "30%", margin:"auto"}}>
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button className="carousel-control-next" type="button" data-bs-target={`#${id}`} data-bs-slide="next" style={{height: "30%", margin:"auto"}}>
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
+        }
       </div>
+      <h2 className="my-3">Planetas</h2>
+      <div className="row miRow bg-secondary d-flex flex-column relative">
+      {
+      store.planetas &&   
+        (store.planetas.length > 0) ? 
+          (store.planetas.map(planeta=>{
+            return ( 
+              <div key={planeta.uid} className="col-3" style={{height:"100%"}}>
+                <Card name={planeta.name}/>
+              </div>
+              )
+            }
+          )) : null
+      }
     </div>
-  );
-};
-
-export default Carrusel;
+    <h2 className="my-3">Naves</h2>
+    <div className="row miRow bg-secondary d-flex flex-column relative">
+      {
+      store.naves &&   
+        (store.naves.length > 0) ? 
+          (store.naves.map(naves=>{
+            return ( 
+              <div key={naves.uid} className="col-3" style={{height:"100%"}}>
+                <Card name={naves.name}/>
+              </div>
+              )
+            }
+          )) : null
+      }
+    </div>
+    </div>
+  )
+}
+export default CarruselComun;
