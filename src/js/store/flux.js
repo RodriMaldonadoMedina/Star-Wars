@@ -1,29 +1,17 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			personajes: [],
+			planetas: [],
+			naves: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
+			/*exampleFunction: () => {
 				getActions().changeColor(0, "green");
-			},
-			getPersonajes: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-				
+			},*/
+
+			getPersonajes: () => {			
 				fetch("https://www.swapi.tech/api/people/", {
 					method: "GET",
 					headers: {
@@ -31,10 +19,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 				})
 					.then(resp => resp.json())
-					.then(data => setStore(data.results))
+					.then(data => {setStore({personajes: data.results});console.log(personajes)})
+					
 					.catch(error => console.log(error));
-				  
+					
 			},
+
+			getPlanetas: () => {			
+				fetch("https://www.swapi.tech/api/planets/", {
+					method: "GET",
+					headers: {
+					"Content-Type": "application/json",
+					},
+				})
+					.then(resp => resp.json())
+					.then(data => setStore({planetas: data.results}))
+					
+					.catch(error => console.log(error));
+					
+			},
+			
+			getNaves: () => {			
+				fetch("https://www.swapi.tech/api/starships", {
+					method: "GET",
+					headers: {
+					"Content-Type": "application/json",
+					},
+				})
+					.then(resp => resp.json())
+					.then(data => setStore({naves: data.results}))
+					
+					.catch(error => console.log(error));
+					
+			},
+			/*
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
@@ -47,7 +65,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 
 				//reset the global store
-				setStore({ demo: demo });
+				setStore({ demo: demo });*/
 			}
 		}
 	};
