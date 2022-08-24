@@ -19,8 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 				})
 					.then(resp => resp.json())
-					.then(data => {setStore({personajes: data.results});console.log(personajes)})
-					
+					.then(data => {setStore({personajes: data.results})})
 					.catch(error => console.log(error));
 					
 			},
@@ -69,6 +68,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		}
 	};
-};
+
 
 export default getState;
