@@ -2,58 +2,48 @@ import React, { useContext } from "react";
 import Card from "./card.jsx";
 import { Context } from "../store/appContext";
 
-
 const Carrusel = () => {
-  const {store} = useContext(Context);
-
+  const { store } = useContext(Context);
+  const tipo = ["personaje", "planeta", "nave"];
   return (
-    <div>
-      <h2 className="my-3">Personajes</h2>
-      <div className="row miRow bg-secondary d-flex flex-column relative">
-        {
-        store.personajes &&   
-          (store.personajes.length > 0) ? 
-            (store.personajes.map(personaje=>{
-              return ( 
-                <div key={personaje.uid} className="col-3" style={{height:"100%"}}>
-                  <Card name={personaje.name} id={personaje.uid}/>
+    <>
+      <h2 className="my-3 text-white">Personajes</h2>
+      <div className="row miRow bg-secondary d-flex flex-column relative bg-opacity-10">
+        {store.personajes && store.personajes.length > 0
+          ? store.personajes.map((personaje, indice) => {
+              return (
+                <div key={indice} className="col-3 " style={{ height: "100%" }}>
+                  <Card name={personaje.name} id={indice + 1} tipo={tipo[0]} />
                 </div>
-                )
-              }
-            )) : null
-        }
+              );
+            })
+          : null}
       </div>
-      <h2 className="my-3">Planetas</h2>
-      <div className="row miRow bg-secondary d-flex flex-column relative">
-      {
-      store.planetas &&   
-        (store.planetas.length > 0) ? 
-          (store.planetas.map(planeta=>{
-            return ( 
-              <div key={planeta.uid} className="col-3" style={{height:"100%"}}>
-                <Card name={planeta.name}/>
-              </div>
-              )
-            }
-          )) : null
-      }
-    </div>
-    <h2 className="my-3">Naves</h2>
-    <div className="row miRow bg-secondary d-flex flex-column relative">
-      {
-      store.naves &&   
-        (store.naves.length > 0) ? 
-          (store.naves.map(naves=>{
-            return ( 
-              <div key={naves.uid} className="col-3" style={{height:"100%"}}>
-                <Card name={naves.name}/>
-              </div>
-              )
-            }
-          )) : null
-      }
-    </div>
-    </div>
-  )
-}
+      <h2 className="my-3 text-white">Planetas</h2>
+      <div className="row miRow bg-secondary d-flex flex-column relative bg-opacity-10">
+        {store.planetas && store.planetas.length > 0
+          ? store.planetas.map((planeta, indice) => {
+              return (
+                <div key={indice} className="col-3" style={{ height: "100%" }}>
+                  <Card name={planeta.name} id={indice + 1} tipo={tipo[1]} />
+                </div>
+              );
+            })
+          : null}
+      </div>
+      <h2 className="my-3 text-white">Naves</h2>
+      <div className="row miRow bg-secondary d-flex flex-column relative bg-opacity-10">
+        {store.naves && store.naves.length > 0
+          ? store.naves.map((naves, indice) => {
+              return (
+                <div key={indice} className="col-3" style={{ height: "100%" }}>
+                  <Card name={naves.name} id={indice + 1} tipo={tipo[2]} />
+                </div>
+              );
+            })
+          : null}
+      </div>
+    </>
+  );
+};
 export default Carrusel;
