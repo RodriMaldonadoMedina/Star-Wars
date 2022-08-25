@@ -3,7 +3,7 @@ import Card from "./card.jsx";
 import { Context } from "../store/appContext";
 
 
-const CarruselComun = () => {
+const Carrusel = () => {
   const {store} = useContext(Context);
 
   return (
@@ -16,7 +16,7 @@ const CarruselComun = () => {
             (store.personajes.map(personaje=>{
               return ( 
                 <div key={personaje.uid} className="col-3" style={{height:"100%"}}>
-                  <Card name={personaje.name}/>
+                  <Card name={personaje.name} id={personaje.uid}/>
                 </div>
                 )
               }
@@ -56,4 +56,4 @@ const CarruselComun = () => {
     </div>
   )
 }
-export default CarruselComun;
+export default Carrusel;

@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
+import { useParams } from "react-router";
 
 const CardExtendido = () => {
+
+  const {store} = useContext(Context);
+  let  params = useParams();
+
+  console.log(params.theid)
+
   return (
     <div className="container card mb-3 border-0 my-5" style={{maxWidth: "800px"}}>
       <div className="row g-0">
@@ -9,7 +17,7 @@ const CardExtendido = () => {
         </div>
         <div className="col-md-6">
           <div className="card-body">
-            <h5 className="card-title">Card title</h5>
+            <h5 className="card-title">Titulo</h5>
             <p className="card-text">
               This is a wider card with supporting text below as a natural
               lead-in to additional content. This content is a little bit
