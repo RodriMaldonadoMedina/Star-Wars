@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 const Card = ({item,id,tipo})=>{
+    const { store } = useContext(Context);
     if (item){
     switch (tipo) {
         case "personaje":
