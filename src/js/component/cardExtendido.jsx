@@ -5,25 +5,24 @@ import { useParams } from "react-router-dom";
 const CardExtendido = () => {
   const { store } = useContext(Context);
   let { id, tipo } = useParams();
-  console.log(store.naves[id - 1].diameter);
 
   switch (tipo) {
     case "personaje":
       return (
         <div
-          className="container card mb-3 border-0 my-5"
+          className="container card mb-3 border-0 my-5 bg-secondary bg-opacity-10"
           style={{ maxWidth: "60rem" }}
         >
           <div className="row g-0">
             <div className="col-md-6">
               <img
                 src="https://www.lavanguardia.com/files/image_948_465/uploads/2017/08/10/5fa3c74b1cd74.jpeg"
-                className="img-fluid rounded-start"
+                className="img-fluid rounded-start m-0"
                 alt="..."
               />
             </div>
             <div className="col-md-6">
-              <div className="card-body">
+              <div className="card-body text-light">
                 <h5 className="card-title">{store.personajes[id - 1].name}</h5>
                 <p className="card-text">
                   This is a wider card with supporting text below as a natural
@@ -38,7 +37,7 @@ const CardExtendido = () => {
           </div>
           <div className="my-3 border border-2 border-danger border-bottom-0 border-end-0 border-start-0">
             <div className="row ms-0">
-              <table>
+              <table className="text-light">
                 <thead>
                   <tr>
                     <th className="px-2">Name</th>
