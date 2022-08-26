@@ -93,7 +93,7 @@ const CardExtendido = () => {
             </div>
           </div>
           <div className="my-3 border border-2 border-danger border-bottom-0 border-end-0 border-start-0">
-          <div className="row ms-0">
+            <div className="row ms-0">
               <table>
                 <thead>
                   <tr>
@@ -150,7 +150,7 @@ const CardExtendido = () => {
             </div>
           </div>
           <div className="my-3 border border-2 border-danger border-bottom-0 border-end-0 border-start-0">
-          <div className="row ms-0">
+            <div className="row ms-0">
               <table>
                 <thead>
                   <tr>
