@@ -30,9 +30,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log(error));
 					
 			},
+			
+			setFavoritos: (item,tipo,id) => {
+				let store = getStore();
+				setStore({favoritos: [...store.favoritos,{item: item, tipo: tipo, id: id}]})
+			},
 
-			setFavoritos: (item) => {
-				setStore({favoritos: item})
+			//utilizo name porque es la unica propiedad que esta en todos lados
+			borrarFavoritos: (name) => {
+				let store = getStore();
+				let favActualizada = store.favoritos.filter(element=>element.item.name != name);
+				setStore({favoritos: favActualizada})				
 			}
 		}
 	}

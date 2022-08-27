@@ -15,3 +15,7 @@ body{
     overflow-x: scroll;
     overflow-y: hidden;
 }
+
+.miHeart:hover{
+    cursor: pointer;
+}

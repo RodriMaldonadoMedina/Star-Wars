@@ -7,7 +7,7 @@ const Carrusel = () => {
   const tipo = ["personaje", "planeta", "nave"];
   return (
     <>
-      <h2 className="my-3 text-white">Personajes</h2>
+      <h2 className="my-3 text-danger">Personajes</h2>
       <div className="row miRow bg-secondary d-flex flex-column relative bg-opacity-10">
         {store.personajes && store.personajes.length > 0
           ? store.personajes.map((personaje, indice) => {
@@ -15,11 +15,11 @@ const Carrusel = () => {
                 <div key={indice} className="col-3 " style={{ height: "100%" }}>
                   <Card item={personaje} id={indice + 1} tipo={tipo[0]} />
                 </div>
-              );
+               );
             })
           : null}
       </div>
-      <h2 className="my-3 text-white">Planetas</h2>
+      <h2 className="my-3 text-danger">Planetas</h2>
       <div className="row miRow bg-secondary d-flex flex-column relative bg-opacity-10">
         {store.planetas && store.planetas.length > 0
           ? store.planetas.map((planeta, indice) => {
@@ -31,7 +31,7 @@ const Carrusel = () => {
             })
           : null}
       </div>
-      <h2 className="my-3 text-white">Naves</h2>
+      <h2 className="my-3 text-danger">Naves</h2>
       <div className="row miRow bg-secondary d-flex flex-column relative bg-opacity-10">
         {store.naves && store.naves.length > 0
           ? store.naves.map((nave, indice) => {

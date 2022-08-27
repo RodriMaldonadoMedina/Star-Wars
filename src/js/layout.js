@@ -22,12 +22,8 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navbar />
 					<Switch>
-						<Route exact path="/">
-							<Home />
-						</Route>
-						<Route exact path="/cardExtendido/:tipo/:id">
-							<CardExtendido />
-						</Route>
+						<Route exact path="/" component={Home} />
+						<Route exact path="/cardExtendido/:tipo/:id" component={CardExtendido} />
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
