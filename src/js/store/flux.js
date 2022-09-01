@@ -10,7 +10,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getPersonajes: () => {			
 				fetch("https://swapi.dev/api/people")
 					.then(resp => resp.json())
-					.then(data => {setStore({personajes : data.results})})
+					.then(data => {
+						setStore({personajes : data.results});
+						localStorage.setItem("personajesLocal", JSON.stringify(data.results));
+					})
 					.catch(error => console.log(error));
 					
 			},
@@ -18,7 +21,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getPlanetas: () => {			
 				fetch("https://swapi.dev/api/planets")
 					.then(resp => resp.json())
-					.then(data => setStore({planetas: data.results}))
+					.then(data => {
+						setStore({planetas: data.results});
+						localStorage.setItem("planetasLocal", JSON.stringify(data.results));
+					})
 					.catch(error => console.log(error));
 					
 			},
@@ -26,7 +32,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getNaves: () => {			
 				fetch("https://swapi.dev/api/starships")
 					.then(resp => resp.json())
-					.then(data => setStore({naves: data.results}))
+					.then(data => {
+						setStore({naves: data.results});
+						localStorage.setItem("navesLocal", JSON.stringify(data.results));
+					})
 					.catch(error => console.log(error));
 					
 			},
@@ -41,7 +50,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let store = getStore();
 				let favActualizada = store.favoritos.filter(element=>element.item.name != name);
 				setStore({favoritos: favActualizada})				
+			},
+
+			setArray: (nombre, array) => {
+				setStore({[nombre]: array})
 			}
+
 		}
 	}
 };
