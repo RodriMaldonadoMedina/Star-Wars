@@ -38,8 +38,15 @@ const injectContext = PassedComponent => {
 					state.actions.setArray("personajes",JSON.parse(personajes))
 				} else state.actions.getPersonajes();
 
-				state.actions.getPlanetas();
-				state.actions.getNaves();
+				let planetas = localStorage.getItem("planetasLocal")
+				if (planetas){
+					state.actions.setArray("planetas",JSON.parse(planetas))
+				} else state.actions.getPlanetas();
+
+				let naves = localStorage.getItem("navesLocal")
+				if (naves){
+					state.actions.setArray("naves",JSON.parse(naves))
+				} else state.actions.getNaves();
 			
 		}, []);
 
